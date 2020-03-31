@@ -28,7 +28,7 @@
 
         call quanc8(fun,a,b,ABSERR,RELERR,RES,ERREST,nofun,FLAG)
 
-        write(*,"(' integral f(x)=', f10.7)") res
+        write(*,"(' integral f(x)=', f15.13)") res
         !Finding minimum of a fuction on interval
         write(*,*) "################"
 
@@ -43,8 +43,8 @@
         !finding Q and R
         write(*,*) "################"
 
-        Q = res**4
-        write(*,"(' Q = ',f7.5)") Q
+        Q = (res - 0.5012966)**4
+        write(*,"(' Q = ',f20.18)") Q
 
         R = 1.312255*minimum
         write(*,"(' R = ',f7.5)") R
