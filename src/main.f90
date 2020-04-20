@@ -14,7 +14,8 @@
         external f_z
         integer            :: nofun
         integer, parameter :: N = 7, out=0
-        REAL fun,A,B,ABSERR,RELERR,RES,ERREST,FLAG, tol, fmin,minimum
+        real res, fmin, fun, f_z
+        REAL A,B,ABSERR,RELERR,ERREST,FLAG, tol, minimum
         real Q, R
         A = 0
         B = 0.5d0
@@ -28,13 +29,13 @@
 
         call quanc8(fun,a,b,ABSERR,RELERR,RES,ERREST,nofun,FLAG)
 
-        write(*,"(' integral f(x)=', f15.13)") res
+        write(*,"(' integral f(x)=', f15.10)") res
         !Finding minimum of a fuction on interval
         write(*,*) "################"
 
         write(*,*) "f(z) = 2*z*(1-0.7**z)+0.49**z+(z-1)**2"
         write(*,*) "Finding minimum of f(z) over [0.1, 1.0]"       
-        TOL = 1.0E-05
+        TOL = 1.0E-06
         A = 0.1d0
         B = 1.0d0
         minimum = FMIN(A,B,f_z,tol)
@@ -44,10 +45,10 @@
         write(*,*) "################"
 
         Q = (res - 0.5012966)**4
-        write(*,"(' Q = ',f20.18)") Q
+        write(*,"(' Q = ', f15.10)") Q
 
         R = 1.312255*minimum
-        write(*,"(' R = ',f7.5)") R
+        write(*,"(' R = ',f15.10)") R
 
         stop
 
